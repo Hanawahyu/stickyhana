@@ -1,42 +1,32 @@
-// pages/index.js
-import React from 'react';
-import ClassCard from '../components/ClassCard';
+import Navbar from "../components/Navbar";
+import StickyHeading from "../components/SkripsiOnline";
 
-const friendsData = {
-    SI: [
-        { name: 'Alice', imageUrl: '/1.jpg' }, // Menggunakan gambar dari folder public
-        { name: 'Bob', imageUrl: '/2.jpg' },
-        { name: 'Charlie', imageUrl: '/3.jpg' },
-        { name: 'David', imageUrl: '/4.jpg' },
-        { name: 'Eve', imageUrl: '/5.jpg' },
-    ],
-    KA: [
-        { name: 'Frank', imageUrl: '/1.jpg' },
-        { name: 'Grace', imageUrl: '/2.jpg' },
-        { name: 'Heidi', imageUrl: '/3.jpg' },
-        { name: 'Ivan', imageUrl: '/4.jpg' },
-        { name: 'Judy', imageUrl: '/5.jpg' },
-    ],
-    BD: [
-        { name: 'Mallory', imageUrl: '/1.jpg' },
-        { name: 'Niaj', imageUrl: '/2.jpg' },
-        { name: 'Olivia', imageUrl: '/3.jpg' },
-        { name: 'Peggy', imageUrl: '/4.jpg' },
-        { name: 'Trent', imageUrl: '/5.jpg' },
-    ],
-};
+export default function Skripsi() {
+  const sections = [
+    { id: "bab1", title: "Bab 1: Pendahuluan" },
+    { id: "bab2", title: "Bab 2: Kajian Pustaka" },
+    { id: "bab3", title: "Bab 3: Metodologi Penelitian" },
+    { id: "bab4", title: "Bab 4: Hasil dan Pembahasan" },
+    { id: "bab5", title: "Bab 5: Kesimpulan dan Saran" },
+  ];
 
-const Home = () => {
-    return (
-        <div style={{ padding: '20px' }}>
-            <h1>Teman-Teman Terbaik</h1>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                {Object.keys(friendsData).map((className) => (
-                    <ClassCard key={className} className={className} friends={friendsData[className]} />
-                ))}
+  return (
+    <div className="bg-gray-100 min-h-screen">
+      <Navbar />
+      <div className="mt-16">
+        <StickyHeading sections={sections} />
+        <div className="max-w-3xl mx-auto p-6 space-y-8">
+          {sections.map((section) => (
+            <div key={section.id} id={section.id} className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-xl font-bold bg-black text-white p-2 rounded">{section.title}</h2>
+              <p className="mt-2 text-gray-700">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
             </div>
+          ))}
         </div>
-    );
-};
-
-export default Home;
+      </div>
+    </div>
+  );
+}
